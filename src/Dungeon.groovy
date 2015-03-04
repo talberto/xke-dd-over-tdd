@@ -4,25 +4,31 @@
 class Dungeon{
 
     static def letters = "abcdefghijklmnopqrstuvwxyz"
+    static def special = "!?-&"
 
-    def convertLetter(letter){
-        return letters.indexOf(letter.toLowerCase())
+    def convertChar(letter){
+        if(Character.isLetter(letter as char)){
+            return letters.indexOf(letter.toLowerCase())%5
+        } else if(Character.isDigit(letter as char)){
+            return 5+(Character.getNumericValue(letter as char) % 5)
+        } else if(special.indexOf(letter)>=0){
+            return 7
+        }
     }
 
     def convertNameToSum(name){
-        def sum = 0
-        name.each({sum+= convertLetter(it)})
-        return sum
+        def sum = name.collect({convertChar(it)}).sum()
+        return reduceDigits(sum)
     }
 
     def reduceDigits(greatNumber){
         def recursiveReduce
         recursiveReduce = {
-            if (it.toString().length()==1){
+            def numberAsString = it.toString()
+            if (numberAsString.length()==1){
                 it
             } else {
-                def sum  = 0
-                it.toString().each({sum+= it as long})
+                def sum  = numberAsString.collect({it as long}).sum()
                 recursiveReduce(sum)
             }
         }
