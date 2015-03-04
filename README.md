@@ -9,44 +9,55 @@ Go : Julien S.
 
 ## Sujet
 
-01234 56789  >--- Value
------------
-ABCDE 01234  \
-FGHIJ 56789  \
-KLMNO   !     >-- Characters
-PQRST   ?    /
-UVWXY   -    /
-Z       &    /
+Chaque lettre, chiffre, caractère est affecté à un chiffre (de 0 à 9).
 
-Value --- 0123456789
-          ||||||||||
-Type  --- ABCDEFGHIJ
+| 0   | 1   | 2   | 3   | 4   |    | 5   | 6   | 7   | 8   | 9   |
+| --- | --- | --- | --- | --- | ---| --- | --- | --- | --- | --- |
+| A   | B   | C   | D   | E   |    |0    | 1   | 2   | 3   | 4   | 
+| F   | G   | H   | I   | J   |    |5    | 6   | 7   | 8   | 9   |
+| K   | L   | M   | N   | O   |    |     |     | !   |     |     |
+| P   | Q   | R   | S   | T   |    |     |     | ?   |     |     |
+| U   | V   | W   | X   | Y   |    |     |     | -   |     |     |
+| Z   |     |     |     |     |    |     |     | &   |     |     |
 
-## Résultat de l'algo
+Convertissant le nom en la somme de chacune des valeurs, puis en réadditionnant les chiffres entre eux nous obtenons un résultat entre 0 et 9.
 
-Type  Item
-----  ----
- A    Medal
- B    Boots of Speed
- C    Headgear Armor Item (Depending on character)
- D    Ring of Protection
- E    Ring of Fire Resistance
- F    Ring of Spell Turning
- G    Gauntlets of Ogre Power
- H    Accessories I (Depending on character)
- I    Accessories II (Depending on character)
- J    Accessories III (Depending on character)
+Par exemple, "Gideon" -> 1+3+3+4+4+3 = 18 -> 1+8 -> 9
+
+Ce chiffre est ensuite reconverti en lettre (le Type) suivant le tableau ci-dessous :
+
+| 0   | 1   | 2   | 3   | 4   | 5   | 6   | 7   | 8   | 9   |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| A   | B   | C   | D   | E   | F   | G   | H   | I   | J   | 
+
+Par exemple, "Gideon" -> 9 -> Type J
+
+Chaque type est ensuite associé à un item selon le tableau ci-dessous :
+
+| Type | Item                    |
+| ---- | ----------------------- |
+| A    | Medal                   |
+| B    | Boots of Speed          |
+| C    | Headgear Armor Item     |
+| D    | Ring of Protection      |
+| E    | Ring of Fire Resistance |
+| F    | Ring of Spell Turning   |
+| G    | Gauntlets of Ogre Power |
+| H    | Anklet                  |
+| I    | Brooch                  |
+| J    | Orb                     |
 
 ## Exemples de noms -> Item
-For example, "Gideon" -> 1+3+3+4+4+3 = 18 -> 1+8 -> 9 = Type J.
 
-Type A - Akuku, Zapuk  
-Type B - Kayin, Sofia
-Type C - Jacob, Lynn
-Type D - Thor, Jennie
-Type E - Seth, Emily
-Type F - Ralph, Jess
-Type G - Dan, Ann
-Type H - Duke, Wendy    
-Type I - Axel, Zelda
-Type J - Aaron, Rosa
+|Type    | Names        |
+| ------ | ------------ |
+| Type A | Akuku, Zapuk | 
+| Type B | Kayin, Sofia |
+| Type C | Jacob, Lynn  |
+| Type D | Thor, Jennie |
+| Type E | Seth, Emily  |
+| Type F | Ralph, Jess  |
+| Type G | Dan, Ann     |
+| Type H | Duke, Wendy  | 
+| Type I | Axel, Zelda  |
+| Type J | Aaron, Rosa  |
