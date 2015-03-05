@@ -52,4 +52,11 @@ class DungeonTest{
         assert 9 == result
     }
 
+    @Test
+    void "should grant an item depending on the player's name"(){
+        def params = ["Akuku", "Zapuk", "Kayin", "Sofia", "Jacob", "Lynn","Thor", "Seth", "Ralph", "Dan", "Duke", "Zelda", "Aaron"]
+        def results = params.collect({dungeonGame.grantGift(it)})
+        assert results.type == ['A', 'A', 'B', 'B', 'C', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+    }
+
 }

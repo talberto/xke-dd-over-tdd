@@ -5,6 +5,18 @@ class Dungeon{
 
     static def letters = "abcdefghijklmnopqrstuvwxyz"
     static def special = "!?-&"
+    static def items = [
+            [type:'A', name:'Medal'],
+            [type:'B', name:'Boots of Speed'],
+            [type:'C', name:'Headgear Armor Item'],
+            [type:'D', name:'Ring of Protection'],
+            [type:'E', name:'Ring of Fire Resistance'],
+            [type:'F', name:'Ring of Spell Turning'],
+            [type:'G', name:'Gauntlets of Ogre Power'],
+            [type:'H', name:'Anklet'],
+            [type:'I', name:'Brooch'],
+            [type:'J', name:'Orb']
+    ]
 
     def convertChar(letter){
         if(Character.isLetter(letter as char)){
@@ -36,6 +48,6 @@ class Dungeon{
     }
 
     def grantGift(name){
-
+        return items[convertNameToSum(name) as int]
     }
 }
